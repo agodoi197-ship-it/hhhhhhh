@@ -1,39 +1,337 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alerta Escolar MT - Plataforma Completa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        /* 🎨 DESIGN MODERNO E PROFISSIONAL */
-        :root {
-            --primary: #1e40af; --primary-light: #3b82f6; --primary-dark: #1e3a8a;
-            --success: #10b981; --warning: #f59e0b; --danger: #ef4444; --info: #3b82f6;
-            --bg: #f8fafc; --card: rgba(255,255,255,0.95); --card-hover: rgba(255,255,255,1);
-            --text: #1e293b; --text-muted: #64748b; --text-light: #94a3b8;
-            --shadow: 0 10px 25px rgba(0,0,0,0.1); --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
-            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            --gradient-success: linear-gradient(135deg, var(--success) 0%, #059669 100%);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ana Klara, meu amor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #ece2c8;
+    --paper-2: #e4d7b8;
+    --ink: #3c2c1e;
+    --ink-soft: #6b5847;
+    --tape-rose: #c98d80;
+    --tape-sage: #93a374;
+    --tape-mustard: #d9ab49;
+    --plum: #6b3450;
+    --card: #f5eeda;
+    --pencil: rgba(60,44,30,0.35);
+    --shadow: rgba(60,44,30,0.28);
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --paper: #221a12;
+      --paper-2: #2b2116;
+      --ink: #ece2c8;
+      --ink-soft: #c9b99e;
+      --tape-rose: #b97263;
+      --tape-sage: #7c9160;
+      --tape-mustard: #c69639;
+      --plum: #d98cb5;
+      --card: #2c2318;
+      --pencil: rgba(236,226,200,0.28);
+      --shadow: rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #221a12;
+    --paper-2: #2b2116;
+    --ink: #ece2c8;
+    --ink-soft: #c9b99e;
+    --tape-rose: #b97263;
+    --tape-sage: #7c9160;
+    --tape-mustard: #c69639;
+    --plum: #d98cb5;
+    --card: #2c2318;
+    --pencil: rgba(236,226,200,0.28);
+    --shadow: rgba(0,0,0,0.55);
+  }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    color: var(--ink);
+    font-family:'Lora', serif;
+    background-color: var(--paper);
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 27px, var(--pencil) 28px),
+      radial-gradient(1200px 700px at 12% -10%, var(--paper-2), transparent 60%);
+    background-attachment: local, fixed;
+    overflow-x:hidden;
+  }
+  .hand{ font-family:'Caveat', cursive; }
+  p{ line-height:1.75; }
 
-        /* 🖥️ TELAS E TRANSições */
-        .screen { display: none; min-height: 100vh; padding: 20px; opacity: 0; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .screen.active { display: block; opacity: 1; transform: translateY(0); }
-        
-        .header { background: var(--gradient); color: white; padding: 15px 20px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
-        .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
-        .user-info { display: flex; align-items: center; gap: 12px; font-weight: 600; }
-        .user-badge { background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 14px; }
-        .btn-icon { background: rgba(255,255,255,0.2); border: none; color: white; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
-        .btn-icon:hover { background: rgba(255,255,255,0.3); transform: scale(1.05); }
+  .page{ max-width: 620px; margin:0 auto; padding: 0 22px; }
 
-        /* 📱 NAVEGAÇÃO INFERIOR FUNCIONAL */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); display: flex; padding: 12px 20px 20px; box-shadow: var(--shadow-lg); z-index: 1000; }
+  .tape{
+    position:absolute;
+    height: 34px;
+    opacity: .82;
+    box-shadow: 0 2px 4px var(--shadow);
+  }
+  .tape::before{
+    content:""; position:absolute; inset:0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,.18) 0 6px, transparent 6px 12px);
+  }
+
+  .hero{
+    position:relative;
+    min-height: 100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding: 90px 26px 60px;
+  }
+  .hero .note{
+    position:relative;
+    max-width: 460px;
+    background: var(--card);
+    border: 1px solid var(--pencil);
+    padding: 44px 32px 38px;
+    transform: rotate(-1.6deg);
+    box-shadow: 0 18px 40px -20px var(--shadow);
+  }
+  .hero .tape{ width: 120px; left: -20px; top: -18px; background: var(--tape-rose); transform: rotate(-8deg); }
+  .hero .tape.two{ width: 90px; left: auto; right: -14px; top: auto; bottom: -16px; background: var(--tape-mustard); transform: rotate(6deg); }
+  .hero h1{
+    font-family:'Caveat', cursive;
+    font-weight: 700;
+    font-size: clamp(3.4rem, 13vw, 5.6rem);
+    line-height: .95;
+    margin: 0 0 6px;
+    color: var(--plum);
+  }
+  .hero .to{
+    font-size: .95rem;
+    color: var(--ink-soft);
+    margin-bottom: 2px;
+  }
+  .hero .sub{
+    margin-top: 18px;
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 40ch;
+  }
+  .hero .pin-note{
+    margin-top: 30px;
+    font-family:'Caveat', cursive;
+    font-size: 1.4rem;
+    color: var(--tape-sage);
+    transform: rotate(-2deg);
+  }
+  .scroll-hint{
+    margin-top: 70px;
+    font-family:'Caveat', cursive;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    display:flex; align-items:center; gap:10px;
+  }
+  .scroll-hint svg{ width:22px; height:22px; animation: bob 2.2s ease-in-out infinite; }
+  @keyframes bob{ 0%,100%{ transform: translateY(0) rotate(90deg);} 50%{ transform: translateY(5px) rotate(90deg);} }
+  @media (prefers-reduced-motion: reduce){ .scroll-hint svg{ animation:none; } }
+
+  .counter-wrap{ padding: 40px 26px 90px; display:flex; justify-content:center; }
+  .sticky{
+    position:relative;
+    background: var(--tape-mustard);
+    color: #362508;
+    width: min(300px, 78vw);
+    padding: 34px 20px 28px;
+    transform: rotate(2.4deg);
+    box-shadow: 0 16px 30px -16px var(--shadow);
+    text-align:center;
+  }
+  .sticky .tape{ width: 100px; left: 50%; top: -16px; transform: translateX(-50%) rotate(-3deg); background: var(--tape-rose); }
+  .sticky .num{
+    font-family:'Caveat', cursive;
+    font-weight:700;
+    font-size: 4.6rem;
+    line-height: .9;
+  }
+  .sticky .cap{ font-family:'Lora', serif; font-size:.95rem; margin-top:6px; }
+  .sticky .since{ margin-top:14px; font-family:'Caveat', cursive; font-size:1.15rem; }
+
+  .reasons-section{ padding: 20px 0 100px; }
+  .reasons-title{
+    font-family:'Caveat', cursive;
+    font-size: clamp(2rem, 7vw, 2.7rem);
+    color: var(--plum);
+    text-align:center;
+    margin-bottom: 50px;
+    transform: rotate(-1deg);
+  }
+  .reasons{
+    display:flex;
+    flex-direction:column;
+    gap: 46px;
+  }
+  .reason-card{
+    position:relative;
+    background: var(--card);
+    border: 1px solid var(--pencil);
+    padding: 26px 24px 24px;
+    max-width: 440px;
+    box-shadow: 0 14px 28px -18px var(--shadow);
+  }
+  .reason-card:nth-child(1){ transform: rotate(-1.4deg); margin-right: auto; }
+  .reason-card:nth-child(2){ transform: rotate(1.6deg); margin-left: auto; }
+  .reason-card:nth-child(3){ transform: rotate(-1deg); margin-right: auto; }
+  .reason-card .tape{ width: 84px; top: -14px; left: 24px; background: var(--tape-sage); transform: rotate(-4deg); }
+  .reason-card:nth-child(2) .tape{ left: auto; right: 24px; background: var(--tape-rose); transform: rotate(5deg); }
+  .reason-card h3{
+    font-family:'Caveat', cursive;
+    font-weight: 600;
+    font-size: 1.7rem;
+    margin: 6px 0 8px;
+    color: var(--ink);
+  }
+  .reason-card p{ margin:0; color: var(--ink-soft); font-size: .98rem; }
+  .squiggle{ width: 70px; height: 14px; margin-top: 10px; color: var(--tape-rose); }
+
+  .letter-section{ padding: 20px 0 100px; }
+  .letter{
+    position:relative;
+    background: var(--card);
+    border: 1px solid var(--pencil);
+    padding: 50px 30px;
+    transform: rotate(0.6deg);
+    box-shadow: 0 20px 44px -22px var(--shadow);
+    clip-path: polygon(0 0, 100% 0.8%, 99.4% 100%, 0.6% 99.3%);
+  }
+  .letter .tape{ width:110px; left:50%; top:-16px; transform: translateX(-50%) rotate(-2deg); background: var(--tape-mustard); }
+  .letter .hi{ font-family:'Caveat', cursive; font-size: 1.8rem; color: var(--plum); margin-bottom: 14px; }
+  .letter p{ color: var(--ink); font-size: 1.04rem; margin: 0 0 16px; }
+  .letter .sign{
+    margin-top: 20px;
+    font-family:'Caveat', cursive;
+    font-size: 1.6rem;
+    color: var(--plum);
+    text-align: right;
+  }
+
+  .closing{
+    text-align:center;
+    padding: 30px 26px 140px;
+  }
+  .closing .big{
+    font-family:'Caveat', cursive;
+    font-weight:700;
+    font-size: clamp(2.6rem, 10vw, 4rem);
+    color: var(--plum);
+    transform: rotate(-1.5deg);
+    display:inline-block;
+  }
+  .closing svg.heart{ width: 46px; height: 46px; margin-top: 18px; color: var(--tape-rose); }
+  .closing .tiny{
+    margin-top: 34px;
+    font-size: .85rem;
+    color: var(--ink-soft);
+    opacity:.75;
+  }
+
+  ::selection{ background: var(--tape-mustard); color: #362508; }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="page" style="display:flex; justify-content:center;">
+    <div class="note">
+      <span class="tape"></span>
+      <span class="tape two"></span>
+      <div class="to">pra você,</div>
+      <h1>Ana Klara</h1>
+      <div class="sub">meu amor — um cantinho pequeno, feito só pra você, pra lembrar o quanto você é amada do jeitinho enroladinho e bobo que só você tem.</div>
+      <div class="pin-note">abre com carinho ↓</div>
+    </div>
+  </div>
+  <div class="page" style="display:flex; justify-content:center;">
+    <div class="scroll-hint">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      vai, continua lendo
+    </div>
+  </div>
+</section>
+
+<section class="counter-wrap">
+  <div class="sticky">
+    <span class="tape"></span>
+    <div class="num" id="dayCount">0</div>
+    <div class="cap" id="dayLabel">dias ao seu lado</div>
+    <div class="since">desde 9 de setembro</div>
+  </div>
+</section>
+
+<section class="reasons-section">
+  <div class="page">
+    <div class="reasons-title">motivos, entre tantos</div>
+    <div class="reasons">
+      <div class="reason-card">
+        <span class="tape"></span>
+        <h3>o cabelo enroladinho</h3>
+        <p>cada cacho no lugar certo, teimoso do jeito que só o seu é — e lindo de um jeito que eu nunca me canso de olhar.</p>
+        <svg class="squiggle" viewBox="0 0 70 14" fill="none"><path d="M2 8 Q 10 2, 18 8 T 34 8 T 50 8 T 66 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="reason-card">
+        <span class="tape"></span>
+        <h3>o jeito bobo</h3>
+        <p>essa mania de rir sozinha, de falar bobagem do nada e me fazer rir junto — é a minha parte preferida do dia, sempre.</p>
+        <svg class="squiggle" viewBox="0 0 70 14" fill="none"><path d="M2 8 Q 10 2, 18 8 T 34 8 T 50 8 T 66 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="reason-card">
+        <span class="tape"></span>
+        <h3>simplesmente, você</h3>
+        <p>o tanto que você se importa, o cuidado que você tem com quem você ama. isso não é pouco, e eu vejo isso todo dia.</p>
+        <svg class="squiggle" viewBox="0 0 70 14" fill="none"><path d="M2 8 Q 10 2, 18 8 T 34 8 T 50 8 T 66 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="letter-section">
+  <div class="page">
+    <div class="letter">
+      <span class="tape"></span>
+      <div class="hi">oi, meu amor.</div>
+      <p>desde o dia 9, cada dia ficou um pouco mais leve, mais engraçado e mais gostoso de viver — só por você estar nele.</p>
+      <p>queria que você soubesse: eu vejo o carinho que você tem, vejo o esforço, vejo o cabelo enroladinho que às vezes você reclama e eu simplesmente amo, vejo o jeito bobo que só te deixa mais você. e amo tudo isso, sem exceção.</p>
+      <p>essa página é pequena, mas o que eu sinto por você não cabe nela. é só um lembrete: você é muito amada, hoje e em todos os outros dias.</p>
+      <div class="sign">com todo o meu amor.</div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="big">te amo, Ana Klara.</div>
+  <div>
+    <svg class="heart" viewBox="0 0 24 24" fill="none"><path d="M12 20.5c-.3 0-.6-.1-.8-.3C7.6 17 3 12.9 3 8.9 3 6 5.2 4 7.8 4c1.6 0 3 .8 4.2 2.3C13.2 4.8 14.6 4 16.2 4 18.8 4 21 6 21 8.9c0 4-4.6 8.1-8.2 11.3-.2.2-.5.3-.8.3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  </div>
+  <p class="tiny">feito com carinho, só pra você</p>
+</section>
+
+<script>
+  (function(){
+    var start = new Date(2026, 8, 9, 0, 0, 0);
+    function update(){
+      var now = new Date();
+      var days = Math.max(0, Math.floor((now - start) / (1000*60*60*24)));
+      var el = document.getElementById('dayCount');
+      var label = document.getElementById('dayLabel');
+      if(el) el.textContent = days;
+      if(label) label.textContent = days === 1 ? 'dia ao seu lado' : 'dias ao seu lado';
+    }
+    update();
+    setInterval(update, 60000);
+  })();
+</script>
+
+</body>
+</html>
         .nav-item { flex: 1; padding: 12px; border-radius: 20px; border: none; background: transparent; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); font-weight: 600; font-size: 12px; display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--text-muted); }
         .nav-item.active, .nav-item:hover { background: var(--gradient); color: white; transform: translateY(-4px); box-shadow: var(--shadow); }
         .nav-item i { font-size: 24px; transition: all 0.3s; }
